@@ -5,7 +5,7 @@ WORKDIR /app/frontend
 RUN npm install && npm run build
 
 
-# 2단계: Flask 서버
+# 2단계: Flask 서
 FROM python:3.10-slim
 WORKDIR /app
 
