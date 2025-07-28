@@ -1,4 +1,4 @@
-# 1단계: React 빌드
+# 1단계: React 빌
 FROM node:20 as frontend
 WORKDIR /app/frontend
 COPY frontend/ .     # 여기에 package.json 반드시 있어야 함
