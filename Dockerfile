@@ -1,9 +1,8 @@
 FROM node:20 as frontend
 WORKDIR /app
-COPY ./frontend ./frontend
+COPY frontend ./frontend
 WORKDIR /app/frontend
 RUN npm install && npm run build
-
 
 # 2단계: Flask 서
 FROM python:3.10-slim
