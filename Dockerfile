@@ -1,13 +1,12 @@
-# Step 1: React build
 FROM node:18 AS frontend
 
-WORKDIR /app/frontend       # ⛳ cd frontend와 동일한 효과
-
+WORKDIR /app/frontend
 COPY frontend/package*.json ./
 RUN npm install
 
 COPY frontend/ ./
 RUN npm run build
+
 
 # Step 2: Flask backend
 FROM python:3.11-slim AS backend
