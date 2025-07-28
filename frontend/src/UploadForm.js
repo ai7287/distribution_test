@@ -16,11 +16,11 @@ const UploadForm = () => {
     formData.append('file', file);
 
     try {
-      await axios.post(
-        'https://your-railway-app.up.railway.app/upload', // Railway 주소
-        formData,
-        { headers: { 'Content-Type': 'multipart/form-data' } }
-      );
+      //await axios.post(
+      // 'https://your-railway-app.up.railway.app/upload', // Railway 주소
+      // formData,
+      //{ headers: { 'Content-Type': 'multipart/form-data' } }
+      // );
       alert('업로드 완료!');
     } catch (err) {
       console.error(err);
