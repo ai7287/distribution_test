@@ -1,8 +1,9 @@
-# 1단계: React 빌
 FROM node:20 as frontend
+WORKDIR /app
+COPY ./frontend ./frontend
 WORKDIR /app/frontend
-COPY frontend/ .     # 여기에 package.json 반드시 있어야 함
 RUN npm install && npm run build
+
 
 # 2단계: Flask 서버
 FROM python:3.10-slim

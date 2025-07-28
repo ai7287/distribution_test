@@ -13,7 +13,7 @@ CORS(app)
 app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB
 
 # 업로드 루트 디렉토리
-BACKEND_UPLOAD_DIR = os.path.join(os.path.dirname(__file__), 'uploads')
+BACKEND_UPLOAD_DIR = os.path.join("/tmp", "uploads")
 os.makedirs(BACKEND_UPLOAD_DIR, exist_ok=True)
 
 @app.route('/api/upload', methods=['POST'])
