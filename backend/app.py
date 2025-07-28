@@ -9,6 +9,9 @@ import uuid
 app = Flask(__name__, static_folder="../frontend/build", static_url_path="/")
 CORS(app)
 
+# ✅ 최대 업로드 허용 크기 설정 (예: 100MB)
+app.config['MAX_CONTENT_LENGTH'] = 100 * 1024 * 1024  # 100MB
+
 # 업로드 루트 디렉토리
 BACKEND_UPLOAD_DIR = os.path.join(os.path.dirname(__file__), 'uploads')
 os.makedirs(BACKEND_UPLOAD_DIR, exist_ok=True)
