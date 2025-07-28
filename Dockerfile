@@ -1,19 +1,34 @@
-# Python 3.10 slim 이미지 사용
+# ------------------------------
+# 1단계: React 앱 빌드
+# ------------------------------
+FROM node:20 as frontend
+
+WORKDIR /app/frontend
+
+COPY frontend/ .
+
+RUN npm install && npm run build
+
+
+# ------------------------------
+# 2단계: Flask 백엔드 + React 정적파일 통합
+# ------------------------------
 FROM python:3.10-slim
 
-# 작업 디렉토리 설정
 WORKDIR /app
 
-# requirements만 먼저 복사 → 캐시 유지를 위해
+# requirements.txt 복사 및 설치
 COPY backend/requirements.txt .
 
-# 라이브러리 설치
 RUN pip install --no-cache-dir -r requirements.txt
 
-# 나머지 백엔드 파일 복사
+# Flask 코드 복사
 COPY backend/ .
 
-# 8080 포트 사용 (Railway 기준)
+# React build 결과 복사 → Flask에서 static 폴더로 사용
+COPY --from=frontend /app/frontend/build ./frontend/build
+
+# 포트 노출 (Railway 기준)
 EXPOSE 8080
 
 # Flask 실행
